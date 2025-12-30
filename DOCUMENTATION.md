@@ -4,7 +4,7 @@ Welcome to the technical documentation for **Study Mood 0.1.3 Alpha**. This docu
 
 ## 🏗️ Architecture Overview
 
-Study Mood v2 is a **Single Page Application (SPA)** built with **Vue 3** and **Vite**. It follows a component-based architecture and relies heavily on **Pinia** for global state management.
+Study Mood 0.1.3 Alpha is a **Single Page Application (SPA)** built with **Vue 3** and **Vite**. It follows a component-based architecture and relies heavily on **Pinia** for global state management.
 
 ### Key Technologies
 - **Vue 3 (Composition API)**: `script setup` syntax for cleaner and more performant components.

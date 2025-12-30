@@ -11,6 +11,8 @@ export const useUserStore = defineStore('user', () => {
     const isOnboarded = ref(false)
     const educationStage = ref('High School')
     const hasSeenTutorial = ref(false)
+    const pin = ref(null) // null = no pin set
+    const isLocked = ref(false) // Session lock state
 
     // Preferences
     const preferences = ref({
@@ -33,7 +35,12 @@ export const useUserStore = defineStore('user', () => {
                     isOnboarded.value = data.isOnboarded || false
                     educationStage.value = data.educationStage || 'High School'
                     if (data.preferences) preferences.value = data.preferences
+                    if (data.preferences) preferences.value = data.preferences
                     if (data.hasSeenTutorial !== undefined) hasSeenTutorial.value = data.hasSeenTutorial
+                    if (data.pin) {
+                        pin.value = data.pin
+                        isLocked.value = true // Auto-lock on load if pin exists
+                    }
                 }
             } catch (e) {
                 console.error('Error loading user data', e)
@@ -111,9 +118,30 @@ export const useUserStore = defineStore('user', () => {
             isOnboarded: isOnboarded.value,
             educationStage: educationStage.value,
             preferences: preferences.value,
-            hasSeenTutorial: hasSeenTutorial.value
+            preferences: preferences.value,
+            hasSeenTutorial: hasSeenTutorial.value,
+            pin: pin.value
         }
         localStorage.setItem('sm_user', JSON.stringify(data))
+    }
+
+    // Security Actions
+    function setPin(newPin) {
+        pin.value = newPin
+        save()
+    }
+
+    function removePin() {
+        pin.value = null
+        save()
+    }
+
+    function unlockApp() {
+        isLocked.value = false
+    }
+
+    function lockApp() {
+        if (pin.value) isLocked.value = true
     }
 
     // Initialize on creation
@@ -129,10 +157,16 @@ export const useUserStore = defineStore('user', () => {
         educationStage,
         preferences,
         hasSeenTutorial,
+        pin,
+        isLocked,
         updateProfile,
         setOnboarded,
         toggleTheme,
         completeTutorial,
-        resetTutorial
+        resetTutorial,
+        setPin,
+        removePin,
+        unlockApp,
+        lockApp
     }
 })

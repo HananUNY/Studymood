@@ -38,8 +38,13 @@ const handleDaySelect = (date) => {
            <h1 class="text-2xl font-bold text-slate-800 dark:text-white leading-tight">{{ t.calendar.title }}</h1>
            <p class="text-xs font-semibold text-slate-400">{{ t.calendar.subtitle }}</p>
         </div>
-        <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-            <span class="material-symbols-outlined text-slate-500">calendar_month</span>
+        <div class="flex items-center gap-2">
+            <button @click="$router.push('/pixels')" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                <span class="material-symbols-outlined text-slate-500">grid_view</span>
+            </button>
+            <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                <span class="material-symbols-outlined text-slate-500">calendar_month</span>
+            </div>
         </div>
       </div>
 

@@ -17,7 +17,7 @@ const localeStore = useLocaleStore()
 const { t, locale } = storeToRefs(localeStore)
 
 // State Mapping (Keeps template compatible)
-const { name: userName, avatar: userAvatar, age: userAge, hobby: userHobby, motto: userMotto, preferences } = storeToRefs(userStore)
+const { name: userName, avatar: userAvatar, age: userAge, hobby: userHobby, motto: userMotto, preferences, pin } = storeToRefs(userStore)
 const { logs } = storeToRefs(moodStore)
 
 // Derived Stats
@@ -60,13 +60,36 @@ const toggleTheme = () => {
     userStore.toggleTheme()
 }
 
-const toggleNotifications = () => {
-   // Just saves to store automatically via v-model on preferences,
-   // but if we need logic:
-   userStore.updateProfile({ preferences: preferences.value })
-   if (preferences.value.notifications && 'Notification' in window) {
-       Notification.requestPermission()
-   }
+const toggleNotifications = async () => {
+    // 1. Save preference state locally
+    userStore.updateProfile({ preferences: preferences.value })
+
+    // 2. Check if Notifications are supported
+    if (!('Notification' in window)) {
+        alert("This browser does not support desktop notifications.")
+        preferences.value.notifications = false
+        return
+    }
+
+    // 3. Handle Permission if turned ON
+    if (preferences.value.notifications) {
+        if (Notification.permission === 'granted') {
+            // Already granted, maybe show a test?
+            new Notification("Study Mood", { body: "Notifications are enabled!" })
+        } else if (Notification.permission !== 'denied') {
+            // Request permission
+            const permission = await Notification.requestPermission()
+            if (permission === 'granted') {
+                new Notification("Study Mood", { body: "Notifications are enabled!" })
+            } else {
+                preferences.value.notifications = false // User denied
+            }
+        } else {
+            // Denied previously
+            alert("Notifications are blocked. Please enable them in your device settings.")
+            preferences.value.notifications = false
+        }
+    }
 }
 
 const toggleLanguage = () => {
@@ -76,8 +99,11 @@ const toggleLanguage = () => {
 
 // Data Management
 const exportData = () => {
+    const userData = { ...userStore.$state }
+    delete userData.pin // Keep PIN device-local
+
     const data = {
-        user: { ...userStore.$state },
+        user: userData,
         logs: moodStore.logs,
         weeklyLogs: moodStore.weeklyLogs,
         plans: planStore.plans,
@@ -194,10 +220,10 @@ const showTutorial = () => {
     router.push('/dashboard')
 }
 
-const showAbout = () => {
+    const showAbout = () => {
     comingSoonData.value = {
-        title: 'StudyMood v0.1.2 (Alpha Build)',
-        message: 'This is an Alpha Build (v0.1.2) of StudyMood. Features are subject to change. Thank you for testing!',
+        title: 'StudyMood v0.1.3 (Alpha Build)',
+        message: 'This is an Alpha Build (v0.1.3). Updated: 30 Dec 2025. Features are subject to change. Thank you for testing!',
         icon: 'info'
     }
     showComingSoon.value = true
@@ -219,6 +245,60 @@ const showPrivacy = () => {
         icon: 'shield'
     }
     showComingSoon.value = true
+}
+
+// PIN Management
+const showPinModal = ref(false)
+// steps: 'create', 'confirm', 'remove'
+const pinStep = ref('create') 
+const tempPin = ref('')
+const pinError = ref('')
+const pinInputRef = ref('')
+
+const openPinSetup = () => {
+    if (pin.value) {
+        // If pin exists, ask to remove
+        pinStep.value = 'remove'
+    } else {
+        pinStep.value = 'create'
+    }
+    tempPin.value = ''
+    pinInputRef.value = ''
+    pinError.value = ''
+    showPinModal.value = true
+}
+
+const savePin = () => {
+    const val = pinInputRef.value
+    if (val.length !== 4) {
+        pinError.value = 'PIN must be 4 digits'
+        return
+    }
+
+    if (pinStep.value === 'create') {
+        tempPin.value = val
+        pinStep.value = 'confirm'
+        pinInputRef.value = ''
+        pinError.value = ''
+    } else if (pinStep.value === 'confirm') {
+        if (val === tempPin.value) {
+            userStore.setPin(val)
+            showPinModal.value = false
+        } else {
+            pinError.value = 'PINs do not match. Try again.'
+            pinStep.value = 'create'
+            pinInputRef.value = ''
+            tempPin.value = ''
+        }
+    } else if (pinStep.value === 'remove') {
+        // Verify current pin to remove (Simplified: just compare)
+        if (val === pin.value) {
+            userStore.removePin()
+            showPinModal.value = false
+        } else {
+            pinError.value = 'Incorrect PIN'
+        }
+    }
 }
 </script>
 
@@ -262,6 +342,27 @@ const showPrivacy = () => {
 
         <!-- ... Stats ... -->
         
+
+
+        <!-- Security Section -->
+        <div class="px-4 pb-2 mt-4">
+             <h3 class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-3 ml-1">Security</h3>
+             <div class="flex flex-col rounded-[1.5rem] bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                <div @click="openPinSetup" class="flex items-center gap-4 p-4 justify-between active:bg-slate-50 dark:active:bg-slate-700/30 cursor-pointer transition-colors">
+                    <div class="flex items-center gap-4">
+                        <div class="text-slate-500 flex items-center justify-center rounded-xl bg-slate-500/10 shrink-0 w-10 h-10">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-slate-900 dark:text-white text-base font-medium leading-normal">{{ pin ? 'Manage App Lock' : 'Set App Lock' }}</p>
+                            <p class="text-slate-400 text-xs">{{ pin ? 'PIN is set' : 'Protect your diary' }}</p>
+                        </div>
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400">chevron_right</span>
+                </div>
+             </div>
+        </div>
+
         <!-- Settings Section: Preferences -->
         <div class="px-4 pb-2 mt-8">
             <h3 class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-3 ml-1">{{ t.profile.settings }}</h3>
@@ -426,7 +527,7 @@ const showPrivacy = () => {
                         </div>
                         <div class="flex flex-col">
                             <p class="text-slate-900 dark:text-white text-base font-medium leading-normal">About App</p>
-                            <p class="text-slate-400 text-xs font-mono">v0.1.2 (Alpha Build)</p>
+                            <p class="text-slate-400 text-xs font-mono">v0.1.3 Alpha</p>
                         </div>
                     </div>
                     <span class="material-symbols-outlined text-slate-400">chevron_right</span>
@@ -566,6 +667,55 @@ const showPrivacy = () => {
                         Got it!
                     </button>
 
+                </div>
+            </div>
+        </Transition>
+    </Teleport>
+
+    <!-- PIN Setup Modal -->
+    <Teleport to="body">
+        <Transition
+            enter-active-class="transition duration-300 ease-out"
+            enter-from-class="opacity-0 scale-95"
+            enter-to-class="opacity-100 scale-100"
+            leave-active-class="transition duration-200 ease-in"
+            leave-from-class="opacity-100 scale-100"
+            leave-to-class="opacity-0 scale-95"
+        >
+            <div v-if="showPinModal" class="fixed inset-0 z-[9999] bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+                <div class="bg-white dark:bg-slate-800 rounded-[2rem] p-8 max-w-sm w-full shadow-2xl border border-white/20">
+                    <div class="flex items-center justify-center mb-6">
+                        <div class="bg-primary/10 p-4 rounded-full">
+                            <span class="material-symbols-outlined text-3xl text-primary">lock</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-center text-slate-900 dark:text-white mb-2">
+                        {{ pinStep === 'remove' ? 'Remove PIN' : (pinStep === 'confirm' ? 'Confirm PIN' : 'Set New PIN') }}
+                    </h3>
+                    <p class="text-center text-slate-500 dark:text-slate-400 text-sm mb-6">
+                        {{ pinStep === 'remove' ? 'Enter current PIN to disable.' : (pinStep === 'confirm' ? 'Re-enter your PIN.' : 'Enter a 4-digit PIN.') }}
+                    </p>
+
+                    <div class="flex justify-center mb-6">
+                        <input 
+                            v-model="pinInputRef" 
+                            type="password" 
+                            inputmode="numeric" 
+                            maxlength="4" 
+                            class="text-center text-3xl font-bold tracking-[0.5em] bg-slate-100 dark:bg-slate-700 rounded-xl py-3 w-40 border-2 border-transparent focus:border-primary focus:outline-none transition-colors"
+                            placeholder="••••"
+                        />
+                    </div>
+
+                    <p v-if="pinError" class="text-red-500 text-xs font-bold text-center mb-4 animate-pulse">{{ pinError }}</p>
+
+                    <div class="flex gap-3">
+                        <button @click="showPinModal = false" class="flex-1 py-3 bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 font-bold rounded-2xl hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">Cancel</button>
+                        <button @click="savePin" class="flex-1 py-3 bg-primary text-white font-bold rounded-2xl shadow-lg hover:opacity-90 active:scale-95 transition-all">
+                            {{ pinStep === 'remove' ? 'Remove' : 'Save' }}
+                        </button>
+                    </div>
                 </div>
             </div>
         </Transition>

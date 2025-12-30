@@ -53,6 +53,12 @@ const router = createRouter({
             path: '/profile',
             name: 'profile',
             component: () => import('../views/ProfileView.vue')
+        },
+        {
+            path: '/pixels',
+            name: 'pixels',
+            component: () => import('../views/YearInPixelsView.vue'),
+            meta: { layout: 'empty' }
         }
     ]
 })

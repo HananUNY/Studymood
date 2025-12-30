@@ -1,6 +1,6 @@
-# 📖 Study Mood 0.1.3 Aplha - Technical Documentation
+# 📖 Study Mood 0.1.3 Alpha - Technical Documentation
 
-Welcome to the technical documentation for **Study Mood 0.1.3 Aplha**. This document is designed to help contributors understand the codebase, architecture, and feature implementations.
+Welcome to the technical documentation for **Study Mood 0.1.3 Alpha**. This document is designed to help contributors understand the codebase, architecture, and feature implementations.
 
 ## 🏗️ Architecture Overview
 

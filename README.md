@@ -1,4 +1,4 @@
-# 🎓 Study Mood v2 (Alpha)
+# 🎓 Study Mood v0.1.3 (Alpha)
 
 ![Version](https://img.shields.io/badge/version-0.1.3%20Alpha-blueviolet)
 ![Status](https://img.shields.io/badge/status-Active%20Development-green)

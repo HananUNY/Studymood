@@ -1,0 +1,981 @@
+{
+  "user": {
+    "name": "Hanan Student",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Hanan",
+    "age": "21",
+    "hobby": "Physics Experiments",
+    "motto": "Eureka!",
+    "educationStage": "University",
+    "isOnboarded": true,
+    "hasSeenTutorial": true,
+    "preferences": {
+      "theme": true,
+      "notifications": true
+    }
+  },
+  "subjects": [
+    {
+      "id": "math",
+      "label": "Mathematics",
+      "emoji": "📐",
+      "color": "bg-blue-100 text-blue-800",
+      "ring": "ring-blue-100"
+    },
+    {
+      "id": "physics",
+      "label": "Physics",
+      "emoji": "⚛️",
+      "color": "bg-purple-100 text-purple-800",
+      "ring": "ring-purple-100"
+    },
+    {
+      "id": "chemistry",
+      "label": "Chemistry",
+      "emoji": "🧪",
+      "color": "bg-green-100 text-green-800",
+      "ring": "ring-green-100"
+    },
+    {
+      "id": "biology",
+      "label": "Biology",
+      "emoji": "🧬",
+      "color": "bg-pink-100 text-pink-800",
+      "ring": "ring-pink-100"
+    }
+  ],
+  "logs": [
+    {
+      "id": "d93dd5cf-25a4-4410-a8ac-afd2fead338e",
+      "timestamp": "2025-12-28T00:00:00.000Z",
+      "date": "2025-12-28T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Mastered the new concept.",
+      "subject": "physics",
+      "stressLevel": "calm",
+      "stressors": [
+        "Time Management"
+      ]
+    },
+    {
+      "id": "8436b387-7ca7-474b-ba28-47926b17bbd7",
+      "timestamp": "2025-12-27T00:00:00.000Z",
+      "date": "2025-12-27T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Mastered the new concept.",
+      "subject": "physics",
+      "stressLevel": "happy",
+      "stressors": [
+        "Health"
+      ]
+    },
+    {
+      "id": "2c1c3b06-43d1-4728-91e2-4f31fd02547c",
+      "timestamp": "2025-12-26T00:00:00.000Z",
+      "date": "2025-12-26T00:00:00.000Z",
+      "mood": 2,
+      "energy": 3,
+      "notes": "Balanced equations correctly.",
+      "subject": "chemistry",
+      "stressLevel": "sad",
+      "stressors": [
+        "Homework"
+      ]
+    },
+    {
+      "id": "3fece9d3-3773-4a47-a1c9-4b6801dd9df3",
+      "timestamp": "2025-12-25T00:00:00.000Z",
+      "date": "2025-12-25T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Boring lecture.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Homework",
+        "Exams",
+        "Social"
+      ]
+    },
+    {
+      "id": "f7becb8a-2ea2-4a4e-9170-45a7c97df3b3",
+      "timestamp": "2025-12-24T00:00:00.000Z",
+      "date": "2025-12-24T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Lab was okay, but messy.",
+      "subject": "chemistry",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "823bb356-75bf-40b4-8fc7-f8e102299f0c",
+      "timestamp": "2025-12-23T00:00:00.000Z",
+      "date": "2025-12-23T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Understanding forces better.",
+      "subject": "physics",
+      "stressLevel": "calm",
+      "stressors": [
+        "Homework"
+      ]
+    },
+    {
+      "id": "9801a446-293f-4e09-96fa-46c492fc4891",
+      "timestamp": "2025-12-22T00:00:00.000Z",
+      "date": "2025-12-22T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Great improvements in geometry.",
+      "subject": "math",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "e39da635-5c82-4f9f-b6c9-9558f2b78708",
+      "timestamp": "2025-12-21T00:00:00.000Z",
+      "date": "2025-12-21T00:00:00.000Z",
+      "mood": 4,
+      "energy": 3,
+      "notes": "Balanced equations correctly.",
+      "subject": "chemistry",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "9a13ab35-f276-41a6-a723-af75f83bb639",
+      "timestamp": "2025-12-20T00:00:00.000Z",
+      "date": "2025-12-20T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Calculus is actually fun.",
+      "subject": "math",
+      "stressLevel": "calm",
+      "stressors": []
+    },
+    {
+      "id": "1f193950-9f55-47d5-bb88-13ae4171bbf1",
+      "timestamp": "2025-12-19T00:00:00.000Z",
+      "date": "2025-12-19T00:00:00.000Z",
+      "mood": 2,
+      "energy": 3,
+      "notes": "Balanced equations correctly.",
+      "subject": "chemistry",
+      "stressLevel": "sad",
+      "stressors": [
+        "Homework",
+        "Health"
+      ]
+    },
+    {
+      "id": "06f9a07d-e2c2-43d0-9dfd-1dc623d9038c",
+      "timestamp": "2025-12-18T00:00:00.000Z",
+      "date": "2025-12-18T00:00:00.000Z",
+      "mood": 2,
+      "energy": 2,
+      "notes": "Struggling with the terms.",
+      "subject": "biology",
+      "stressLevel": "sad",
+      "stressors": [
+        "Social",
+        "Exams"
+      ]
+    },
+    {
+      "id": "e067d4f7-c6b1-43b4-a3e5-4e0dbc76e795",
+      "timestamp": "2025-12-17T00:00:00.000Z",
+      "date": "2025-12-17T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Physics makes sense to me.",
+      "subject": "physics",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "9ad5d8d3-8adb-421e-9b41-19a891dba018",
+      "timestamp": "2025-12-16T00:00:00.000Z",
+      "date": "2025-12-16T00:00:00.000Z",
+      "mood": 4,
+      "energy": 3,
+      "notes": "Average session.",
+      "subject": "chemistry",
+      "stressLevel": "happy",
+      "stressors": [
+        "Time Management"
+      ]
+    },
+    {
+      "id": "634a5d91-cb60-44b4-99ec-e4732e57e08d",
+      "timestamp": "2025-12-15T00:00:00.000Z",
+      "date": "2025-12-15T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Understanding forces better.",
+      "subject": "physics",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "11539214-6058-429d-bea8-4584198e0831",
+      "timestamp": "2025-12-14T00:00:00.000Z",
+      "date": "2025-12-14T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "High energy session.",
+      "subject": "physics",
+      "stressLevel": "calm",
+      "stressors": []
+    },
+    {
+      "id": "96b74854-b909-497b-955f-986c8c714dfb",
+      "timestamp": "2025-12-13T00:00:00.000Z",
+      "date": "2025-12-13T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Struggling with the terms.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Lack of Sleep",
+        "Time Management"
+      ]
+    },
+    {
+      "id": "b9464fd5-ad15-44af-8f62-20f820ed3817",
+      "timestamp": "2025-12-12T00:00:00.000Z",
+      "date": "2025-12-12T00:00:00.000Z",
+      "mood": 3,
+      "energy": 2,
+      "notes": "Understanding atomic structure.",
+      "subject": "chemistry",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "32a8ea53-96e2-4901-91c2-3427301fc444",
+      "timestamp": "2025-12-11T00:00:00.000Z",
+      "date": "2025-12-11T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "High energy session.",
+      "subject": "physics",
+      "stressLevel": "calm",
+      "stressors": []
+    },
+    {
+      "id": "6817fecc-c592-44be-b1b4-2dc64ba65c78",
+      "timestamp": "2025-12-10T00:00:00.000Z",
+      "date": "2025-12-10T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Lab experiment was cool.",
+      "subject": "physics",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "5b941426-4cee-4ff7-9236-eb532f941222",
+      "timestamp": "2025-12-09T00:00:00.000Z",
+      "date": "2025-12-09T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Too much memorization.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Future Anxiety",
+        "Time Management"
+      ]
+    },
+    {
+      "id": "cfb1a023-3d3a-4bad-864e-c73d60915366",
+      "timestamp": "2025-12-08T00:00:00.000Z",
+      "date": "2025-12-08T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Great improvements in geometry.",
+      "subject": "math",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "08a1caaa-0e72-4bef-8000-d195f7ceaea0",
+      "timestamp": "2025-12-07T00:00:00.000Z",
+      "date": "2025-12-07T00:00:00.000Z",
+      "mood": 3,
+      "energy": 4,
+      "notes": "Formulas are tricky.",
+      "subject": "chemistry",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "d4d99455-5b66-4932-aaf5-1998c9cfd117",
+      "timestamp": "2025-12-06T00:00:00.000Z",
+      "date": "2025-12-06T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Lab experiment was cool.",
+      "subject": "physics",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "ecba9b24-106b-4c11-a666-c7918043b50d",
+      "timestamp": "2025-12-05T00:00:00.000Z",
+      "date": "2025-12-05T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Calculus is actually fun.",
+      "subject": "math",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "80bdb1c8-2d91-42bb-bd13-0de21d79b413",
+      "timestamp": "2025-12-04T00:00:00.000Z",
+      "date": "2025-12-04T00:00:00.000Z",
+      "mood": 3,
+      "energy": 4,
+      "notes": "Balanced equations correctly.",
+      "subject": "chemistry",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "132ab8fc-18d3-44ae-a206-2529b1ace3d6",
+      "timestamp": "2025-12-03T00:00:00.000Z",
+      "date": "2025-12-03T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "High energy session.",
+      "subject": "physics",
+      "stressLevel": "calm",
+      "stressors": []
+    },
+    {
+      "id": "27cfd4ce-fd96-4fd1-b683-5bd5cf39a753",
+      "timestamp": "2025-12-02T00:00:00.000Z",
+      "date": "2025-12-02T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Formulas are tricky.",
+      "subject": "chemistry",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "3f93e4b6-f9dd-4e94-a5cb-899819944a53",
+      "timestamp": "2025-12-01T00:00:00.000Z",
+      "date": "2025-12-01T00:00:00.000Z",
+      "mood": 2,
+      "energy": 2,
+      "notes": "Balanced equations correctly.",
+      "subject": "chemistry",
+      "stressLevel": "sad",
+      "stressors": [
+        "Health",
+        "Time Management",
+        "Future Anxiety"
+      ]
+    },
+    {
+      "id": "797def51-6e4e-436a-a616-71ff99d085d5",
+      "timestamp": "2025-11-30T00:00:00.000Z",
+      "date": "2025-11-30T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Calculus is actually fun.",
+      "subject": "math",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "6de8ccc9-ae95-42e5-80db-a03640836f2f",
+      "timestamp": "2025-11-29T00:00:00.000Z",
+      "date": "2025-11-29T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Struggling with the terms.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Social",
+        "Family"
+      ]
+    },
+    {
+      "id": "ecc3626e-1ada-4b74-b23f-f5c0615be1b0",
+      "timestamp": "2025-11-28T00:00:00.000Z",
+      "date": "2025-11-28T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Understanding atomic structure.",
+      "subject": "chemistry",
+      "stressLevel": "okay",
+      "stressors": [
+        "Social"
+      ]
+    },
+    {
+      "id": "31570990-130a-4bea-bac1-188ed7d86b54",
+      "timestamp": "2025-11-27T00:00:00.000Z",
+      "date": "2025-11-27T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "High energy session.",
+      "subject": "physics",
+      "stressLevel": "okay",
+      "stressors": [
+        "Time Management"
+      ]
+    },
+    {
+      "id": "dac3067f-fc07-4f31-8f35-37119fbccd6e",
+      "timestamp": "2025-11-26T00:00:00.000Z",
+      "date": "2025-11-26T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Aced the quiz!",
+      "subject": "math",
+      "stressLevel": "calm",
+      "stressors": [
+        "Lack of Sleep"
+      ]
+    },
+    {
+      "id": "2b057319-b463-4b02-9147-4870b38ec02d",
+      "timestamp": "2025-11-25T00:00:00.000Z",
+      "date": "2025-11-25T00:00:00.000Z",
+      "mood": 3,
+      "energy": 2,
+      "notes": "Too much memorization.",
+      "subject": "biology",
+      "stressLevel": "okay",
+      "stressors": [
+        "Homework"
+      ]
+    },
+    {
+      "id": "ef308354-b708-46eb-a4f0-be499b6cbd8a",
+      "timestamp": "2025-11-24T00:00:00.000Z",
+      "date": "2025-11-24T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Struggling with the terms.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Family"
+      ]
+    },
+    {
+      "id": "0d0f4300-025a-42b7-a5ab-4833cee2e600",
+      "timestamp": "2025-11-23T00:00:00.000Z",
+      "date": "2025-11-23T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Physics makes sense to me.",
+      "subject": "physics",
+      "stressLevel": "happy",
+      "stressors": [
+        "Family"
+      ]
+    },
+    {
+      "id": "2bc3bf62-59ed-49d1-80aa-33e355e19bf3",
+      "timestamp": "2025-11-22T00:00:00.000Z",
+      "date": "2025-11-22T00:00:00.000Z",
+      "mood": 2,
+      "energy": 2,
+      "notes": "Need to study more, felt lost.",
+      "subject": "biology",
+      "stressLevel": "sad",
+      "stressors": [
+        "Family"
+      ]
+    },
+    {
+      "id": "b60115b6-c007-4533-b9e5-a945c5a416b9",
+      "timestamp": "2025-11-21T00:00:00.000Z",
+      "date": "2025-11-21T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Mastered the new concept.",
+      "subject": "physics",
+      "stressLevel": "calm",
+      "stressors": []
+    },
+    {
+      "id": "6cd1d27b-b0ef-4cb5-a369-fc33c982c4f5",
+      "timestamp": "2025-11-20T00:00:00.000Z",
+      "date": "2025-11-20T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Boring lecture.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Homework",
+        "Lack of Sleep"
+      ]
+    },
+    {
+      "id": "51d24dae-2c6e-4a60-a3bd-73c2b19dc7ce",
+      "timestamp": "2025-11-19T00:00:00.000Z",
+      "date": "2025-11-19T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Need to study more, felt lost.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Homework"
+      ]
+    },
+    {
+      "id": "2da07f6c-038a-4202-ba8c-4217f95ee47d",
+      "timestamp": "2025-11-18T00:00:00.000Z",
+      "date": "2025-11-18T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "High energy session.",
+      "subject": "physics",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "6ff47ce0-ef83-4a3a-8089-ee96d626fb7d",
+      "timestamp": "2025-11-17T00:00:00.000Z",
+      "date": "2025-11-17T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Boring lecture.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Social",
+        "Family"
+      ]
+    },
+    {
+      "id": "109743ca-8afc-4067-8ec9-72a11ae4959c",
+      "timestamp": "2025-11-16T00:00:00.000Z",
+      "date": "2025-11-16T00:00:00.000Z",
+      "mood": 3,
+      "energy": 2,
+      "notes": "Hard to keep up.",
+      "subject": "biology",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "e2d1409d-2895-4e77-b443-a4d509c1fc69",
+      "timestamp": "2025-11-15T00:00:00.000Z",
+      "date": "2025-11-15T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Great improvements in geometry.",
+      "subject": "math",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "75eeab61-2bef-4288-9878-72887af65392",
+      "timestamp": "2025-11-14T00:00:00.000Z",
+      "date": "2025-11-14T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Great improvements in geometry.",
+      "subject": "math",
+      "stressLevel": "calm",
+      "stressors": []
+    },
+    {
+      "id": "63c63be0-c877-4675-b5a0-fde0ef8a0fd3",
+      "timestamp": "2025-11-13T00:00:00.000Z",
+      "date": "2025-11-13T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Lab experiment was cool.",
+      "subject": "physics",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "9aaaf4aa-1404-4dec-96c1-bc0ae8ab50c7",
+      "timestamp": "2025-11-12T00:00:00.000Z",
+      "date": "2025-11-12T00:00:00.000Z",
+      "mood": 2,
+      "energy": 3,
+      "notes": "Average session.",
+      "subject": "chemistry",
+      "stressLevel": "sad",
+      "stressors": [
+        "Time Management"
+      ]
+    },
+    {
+      "id": "bf915543-9e1d-4cb9-81f9-4dd04e033745",
+      "timestamp": "2025-11-11T00:00:00.000Z",
+      "date": "2025-11-11T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Average session.",
+      "subject": "chemistry",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "b9018774-2034-45ea-b681-4366dafc7a71",
+      "timestamp": "2025-11-10T00:00:00.000Z",
+      "date": "2025-11-10T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Hard to keep up.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Health",
+        "Time Management"
+      ]
+    },
+    {
+      "id": "fd0c2a02-7ed4-4e8e-bb2f-0b3c333186d6",
+      "timestamp": "2025-11-09T00:00:00.000Z",
+      "date": "2025-11-09T00:00:00.000Z",
+      "mood": 1,
+      "energy": 1,
+      "notes": "Too much memorization.",
+      "subject": "biology",
+      "stressLevel": "high",
+      "stressors": [
+        "Health"
+      ]
+    },
+    {
+      "id": "340583d1-7908-4c69-9a23-361d733a98e2",
+      "timestamp": "2025-11-08T00:00:00.000Z",
+      "date": "2025-11-08T00:00:00.000Z",
+      "mood": 3,
+      "energy": 3,
+      "notes": "Average session.",
+      "subject": "chemistry",
+      "stressLevel": "okay",
+      "stressors": []
+    },
+    {
+      "id": "fb400b81-06bd-4a13-a3b2-f5193091fad2",
+      "timestamp": "2025-11-07T00:00:00.000Z",
+      "date": "2025-11-07T00:00:00.000Z",
+      "mood": 4,
+      "energy": 4,
+      "notes": "Lab was okay, but messy.",
+      "subject": "chemistry",
+      "stressLevel": "happy",
+      "stressors": [
+        "Social"
+      ]
+    },
+    {
+      "id": "f7a4a217-aae7-4369-a721-549b349d07eb",
+      "timestamp": "2025-11-06T00:00:00.000Z",
+      "date": "2025-11-06T00:00:00.000Z",
+      "mood": 4,
+      "energy": 3,
+      "notes": "Average session.",
+      "subject": "chemistry",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "99fe8eb4-3272-4ca5-89b3-30c02ee354d7",
+      "timestamp": "2025-11-05T00:00:00.000Z",
+      "date": "2025-11-05T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Felt focused and sharp.",
+      "subject": "math",
+      "stressLevel": "calm",
+      "stressors": [
+        "Lack of Sleep"
+      ]
+    },
+    {
+      "id": "eee9e56e-f57d-44c9-9b73-c6450e91d6e2",
+      "timestamp": "2025-11-04T00:00:00.000Z",
+      "date": "2025-11-04T00:00:00.000Z",
+      "mood": 4,
+      "energy": 3,
+      "notes": "Balanced equations correctly.",
+      "subject": "chemistry",
+      "stressLevel": "happy",
+      "stressors": []
+    },
+    {
+      "id": "6eafe965-5473-4d3b-89d5-9e142219b66d",
+      "timestamp": "2025-11-03T00:00:00.000Z",
+      "date": "2025-11-03T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Aced the quiz!",
+      "subject": "math",
+      "stressLevel": "calm",
+      "stressors": []
+    },
+    {
+      "id": "b0c72e67-3b7c-4e18-a6ac-7b82746a38ea",
+      "timestamp": "2025-11-02T00:00:00.000Z",
+      "date": "2025-11-02T00:00:00.000Z",
+      "mood": 5,
+      "energy": 5,
+      "notes": "Mastered the new concept.",
+      "subject": "physics",
+      "stressLevel": "calm",
+      "stressors": []
+    },
+    {
+      "id": "da33c9b4-3dc4-41c6-8dcc-7683b5c84746",
+      "timestamp": "2025-11-01T00:00:00.000Z",
+      "date": "2025-11-01T00:00:00.000Z",
+      "mood": 2,
+      "energy": 2,
+      "notes": "Average session.",
+      "subject": "chemistry",
+      "stressLevel": "sad",
+      "stressors": [
+        "Time Management",
+        "Future Anxiety",
+        "Exams"
+      ]
+    }
+  ],
+  "weeklyLogs": [
+    {
+      "id": "da7d7433-6158-4436-ba6c-f22af19eff48",
+      "date": "2025-11-02T00:00:00.000Z",
+      "averageMood": "3.5",
+      "summary": "A decent week, kept up with work.",
+      "totalStudyHours": 15,
+      "classification": "Moderate",
+      "stressPercentage": 45,
+      "score": "B",
+      "answers": {
+        "1": 2,
+        "2": 1,
+        "3": 2,
+        "4": 2,
+        "5": 1,
+        "6": 2,
+        "7": 2,
+        "8": 1,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "42b807a4-fb04-4da9-b966-b422acdff0d1",
+      "date": "2025-11-09T00:00:00.000Z",
+      "averageMood": "3.7",
+      "summary": "A decent week, kept up with work.",
+      "totalStudyHours": 16,
+      "classification": "Moderate",
+      "stressPercentage": 45,
+      "score": "B",
+      "answers": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      }
+    },
+    {
+      "id": "5a9c2e99-c147-4089-85c6-26b8c79438a6",
+      "date": "2025-11-16T00:00:00.000Z",
+      "averageMood": "3.0",
+      "summary": "A decent week, kept up with work.",
+      "totalStudyHours": 11,
+      "classification": "Moderate",
+      "stressPercentage": 45,
+      "score": "B",
+      "answers": {
+        "1": 2,
+        "2": 1,
+        "3": 3,
+        "4": 1,
+        "5": 1,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 4,
+        "10": 3
+      }
+    },
+    {
+      "id": "4980935c-2d6d-4a50-acca-54f566621ed8",
+      "date": "2025-11-23T00:00:00.000Z",
+      "averageMood": "2.6",
+      "summary": "Tough week, felt overwhelmed.",
+      "totalStudyHours": 17,
+      "classification": "High",
+      "stressPercentage": 85,
+      "score": "C",
+      "answers": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 4,
+        "6": 2,
+        "7": 2,
+        "8": 1,
+        "9": 4,
+        "10": 2
+      }
+    },
+    {
+      "id": "fc1da9c7-c467-4af4-9af6-73139dc1de2f",
+      "date": "2025-11-30T00:00:00.000Z",
+      "averageMood": "2.9",
+      "summary": "Tough week, felt overwhelmed.",
+      "totalStudyHours": 14,
+      "classification": "High",
+      "stressPercentage": 85,
+      "score": "C",
+      "answers": {
+        "1": 4,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 2,
+        "6": 1,
+        "7": 1,
+        "8": 2,
+        "9": 1,
+        "10": 1
+      }
+    },
+    {
+      "id": "9d60d768-46a2-4473-9dad-c07ae8c497e1",
+      "date": "2025-12-07T00:00:00.000Z",
+      "averageMood": "3.4",
+      "summary": "A decent week, kept up with work.",
+      "totalStudyHours": 14,
+      "classification": "Moderate",
+      "stressPercentage": 45,
+      "score": "B",
+      "answers": {
+        "1": 2,
+        "2": 2,
+        "3": 4,
+        "4": 4,
+        "5": 1,
+        "6": 4,
+        "7": 3,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "a84c101b-fbe0-46af-9c60-b0622ebf76e7",
+      "date": "2025-12-14T00:00:00.000Z",
+      "averageMood": "3.0",
+      "summary": "A decent week, kept up with work.",
+      "totalStudyHours": 14,
+      "classification": "Moderate",
+      "stressPercentage": 45,
+      "score": "B",
+      "answers": {
+        "1": 3,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 3,
+        "6": 2,
+        "7": 3,
+        "8": 4,
+        "9": 1,
+        "10": 2
+      }
+    },
+    {
+      "id": "9a7e0ce5-9e43-4afe-ae80-a87a2692650a",
+      "date": "2025-12-21T00:00:00.000Z",
+      "averageMood": "3.4",
+      "summary": "A decent week, kept up with work.",
+      "totalStudyHours": 19,
+      "classification": "Moderate",
+      "stressPercentage": 45,
+      "score": "B",
+      "answers": {
+        "1": 3,
+        "2": 2,
+        "3": 4,
+        "4": 1,
+        "5": 1,
+        "6": 2,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 3
+      }
+    },
+    {
+      "id": "e240a6cf-eb08-4032-ae48-6534fad10c22",
+      "date": "2025-12-28T00:00:00.000Z",
+      "averageMood": "3.4",
+      "summary": "A decent week, kept up with work.",
+      "totalStudyHours": 12,
+      "classification": "Moderate",
+      "stressPercentage": 45,
+      "score": "B",
+      "answers": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 2,
+        "5": 4,
+        "6": 4,
+        "7": 1,
+        "8": 3,
+        "9": 4,
+        "10": 1
+      }
+    }
+  ],
+  "plans": [
+    {
+      "id": "plan-1",
+      "title": "Final Exam Prep",
+      "subject": "math",
+      "duration": "3h",
+      "notes": "Review all chapters",
+      "completed": false,
+      "startTime": "09:00",
+      "date": "2025-12-29T00:00:00.000Z",
+      "createdAt": "2025-12-28T00:00:00.000Z"
+    },
+    {
+      "id": "plan-2",
+      "title": "Biology Flashcards",
+      "subject": "biology",
+      "duration": "1h",
+      "notes": "Focus on cells",
+      "completed": false,
+      "startTime": "14:00",
+      "date": "2025-12-28T00:00:00.000Z",
+      "createdAt": "2025-12-28T00:00:00.000Z"
+    }
+  ],
+  "version": "1.0"
+}

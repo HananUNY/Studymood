@@ -1,7 +1,7 @@
 <script setup>
 /**
  * Study Mood v2
- * Version: 0.1.3 Alpha
+ * Version: 0.1.4 Alpha (Jan 10)
  * Developed by: Hanan Dimas Prasetya + Gemini AI
  */
 import { computed } from 'vue'
@@ -27,6 +27,6 @@ const isDefaultLayout = computed(() => route.meta.layout !== 'empty')
 
   <!-- Watermark -->
   <div class="fixed top-2 right-4 z-[9999] text-[8px] font-bold text-slate-300 dark:text-slate-600 pointer-events-none opacity-50 select-none">
-      v0.1.3 Alpha (30 Dec 2025) • Dikembangkan oleh Hanan Dimas Prasetya + Gemini AI
+      v0.1.4 Alpha (January 10 Update) • Dikembangkan oleh Hanan Dimas Prasetya + Gemini AI
   </div>
 </template>

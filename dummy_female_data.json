@@ -1,0 +1,201 @@
+{
+    "version": "1.0",
+    "user": {
+        "name": "Sarah Student",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+        "age": "20",
+        "hobby": "Design",
+        "motto": "Stay consistent.",
+        "gender": "female",
+        "educationStage": "University",
+        "isOnboarded": true,
+        "preferences": {
+            "theme": true,
+            "notifications": true
+        }
+    },
+    "subjects": [
+        {
+            "id": "math",
+            "label": "Math",
+            "emoji": "📐",
+            "color": "bg-blue-100 text-blue-800"
+        },
+        {
+            "id": "biology",
+            "label": "Biology",
+            "emoji": "🧬",
+            "color": "bg-green-100 text-green-800"
+        },
+        {
+            "id": "history",
+            "label": "History",
+            "emoji": "🏛️",
+            "color": "bg-yellow-100 text-yellow-800"
+        },
+        {
+            "id": "art",
+            "label": "Art",
+            "emoji": "🎨",
+            "color": "bg-orange-100 text-orange-800"
+        }
+    ],
+    "logs": [
+        {
+            "id": 1704067200000,
+            "timestamp": "2026-01-01T08:00:00.000Z",
+            "date": "2026-01-01T08:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "sad",
+            "confidence": 40,
+            "subjectId": "math",
+            "stressors": [
+                "fatigue"
+            ],
+            "note": "Feeling tired and crampy.",
+            "isPeriod": true,
+            "symptoms": [
+                "cramps",
+                "fatigue"
+            ],
+            "mood": 2
+        },
+        {
+            "id": 1704153600000,
+            "timestamp": "2026-01-02T09:00:00.000Z",
+            "date": "2026-01-02T09:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "sad",
+            "confidence": 45,
+            "subjectId": "history",
+            "stressors": [
+                "deadlines"
+            ],
+            "note": "Still uncomfortable.",
+            "isPeriod": true,
+            "symptoms": [
+                "bloating",
+                "moody"
+            ],
+            "mood": 2
+        },
+        {
+            "id": 1704240000000,
+            "timestamp": "2026-01-03T10:00:00.000Z",
+            "date": "2026-01-03T10:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "okay",
+            "confidence": 55,
+            "subjectId": "biology",
+            "stressors": [],
+            "note": "Bit better today.",
+            "isPeriod": true,
+            "symptoms": [
+                "headache"
+            ],
+            "mood": 3
+        },
+        {
+            "id": 1704326400000,
+            "timestamp": "2026-01-04T08:00:00.000Z",
+            "date": "2026-01-04T08:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "okay",
+            "confidence": 60,
+            "subjectId": "art",
+            "stressors": [],
+            "note": "Drawing helps.",
+            "isPeriod": true,
+            "symptoms": [
+                "cramps"
+            ],
+            "mood": 3
+        },
+        {
+            "id": 1704412800000,
+            "timestamp": "2026-01-05T08:00:00.000Z",
+            "date": "2026-01-05T08:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "happy",
+            "confidence": 80,
+            "subjectId": "math",
+            "stressors": [],
+            "note": "Period over! Feeling great.",
+            "isPeriod": false,
+            "symptoms": [],
+            "mood": 4
+        },
+        {
+            "id": 1704499200000,
+            "timestamp": "2026-01-06T09:00:00.000Z",
+            "date": "2026-01-06T09:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "calm",
+            "confidence": 90,
+            "subjectId": "biology",
+            "stressors": [],
+            "note": "Super productive session.",
+            "isPeriod": false,
+            "symptoms": [],
+            "mood": 5
+        },
+        {
+            "id": 1704585600000,
+            "timestamp": "2026-01-07T10:00:00.000Z",
+            "date": "2026-01-07T10:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "happy",
+            "confidence": 85,
+            "subjectId": "history",
+            "stressors": [],
+            "note": "Interesting topic today.",
+            "isPeriod": false,
+            "symptoms": [],
+            "mood": 4
+        },
+        {
+            "id": 1704672000000,
+            "timestamp": "2026-01-08T08:00:00.000Z",
+            "date": "2026-01-08T08:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "calm",
+            "confidence": 95,
+            "subjectId": "art",
+            "stressors": [],
+            "note": "Finished my project!",
+            "isPeriod": false,
+            "symptoms": [],
+            "mood": 5
+        },
+        {
+            "id": 1704758400000,
+            "timestamp": "2026-01-09T08:00:00.000Z",
+            "date": "2026-01-09T08:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "okay",
+            "confidence": 75,
+            "subjectId": "math",
+            "stressors": [
+                "deadlines"
+            ],
+            "note": "Got some homework.",
+            "isPeriod": false,
+            "symptoms": [],
+            "mood": 3
+        },
+        {
+            "id": 1704844800000,
+            "timestamp": "2026-01-10T08:00:00.000Z",
+            "date": "2026-01-10T08:00:00.000Z",
+            "type": "daily",
+            "stressLevel": "happy",
+            "confidence": 88,
+            "subjectId": "biology",
+            "stressors": [],
+            "note": "Feeling smart today.",
+            "isPeriod": false,
+            "symptoms": [],
+            "mood": 4
+        }
+    ]
+}

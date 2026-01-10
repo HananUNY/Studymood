@@ -8,12 +8,15 @@ import {
 } from '@heroicons/vue/24/solid'
 import { useMoodStore } from '../stores/moodStore'
 import { useLocaleStore } from '../stores/localeStore'
+import { useUserStore } from '../stores/userStore'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 
 const router = useRouter()
 const moodStore = useMoodStore()
 const localeStore = useLocaleStore()
+const userStore = useUserStore()
+
 import { useSubjectStore } from '../stores/subjectStore'
 const subjectStore = useSubjectStore()
 const { t } = storeToRefs(localeStore)
@@ -25,6 +28,10 @@ const stressLevelId = ref('okay')
 const confidence = ref(75)
 const selectedStressors = ref(['deadlines'])
 const journalText = ref('')
+// Period Tracker
+const isPeriod = ref(false)
+const selectedSymptoms = ref([])
+
 
 onMounted(() => {
   // Load Subjects from LocalStorage (Sync with Onboarding)
@@ -70,6 +77,15 @@ const STRESSORS = computed(() => [
   { id: 'peers', label: t.value.daily_log.stressors.peers, icon: 'group' },
   { id: 'sleep', label: t.value.daily_log.stressors.sleep, icon: 'bedtime' },
 ])
+
+const PERIOD_SYMPTOMS = [
+    { id: 'cramps', label: 'Cramps', icon: 'health_and_safety' }, // Using general icons as fallback
+    { id: 'headache', label: 'Headache', icon: 'healing' },
+    { id: 'fatigue', label: 'Fatigue', icon: 'battery_alert' },
+    { id: 'bloating', label: 'Bloating', icon: 'water_drop' },
+    { id: 'moody', label: 'Mood Swings', icon: 'sentiment_dissatisfied' },
+]
+
 
 // --- Scroll & Snap Logic ---
 const stressContainer = ref(null)
@@ -130,6 +146,15 @@ const toggleStressor = (id) => {
   }
 }
 
+const toggleSymptom = (id) => {
+  if (selectedSymptoms.value.includes(id)) {
+    selectedSymptoms.value = selectedSymptoms.value.filter(s => s !== id)
+  } else {
+    selectedSymptoms.value.push(id)
+  }
+}
+
+
 const handleSave = () => {
   // Create Log Object
   const newLog = {
@@ -145,7 +170,12 @@ const handleSave = () => {
     stressors: selectedStressors.value,
     note: journalText.value,
     
+    // Period Data
+    isPeriod: isPeriod.value,
+    symptoms: isPeriod.value ? selectedSymptoms.value : [],
+
     // UI mappings expected by Dashboard
+
     mood: stressLevelId.value, 
     subject: selectedCategoryId.value 
   }
@@ -313,8 +343,43 @@ const goBack = () => router.back()
         </div>
       </div>
 
+      <!-- Period / Cycle Tracker (Female Only) -->
+      <div v-if="userStore.gender === 'female'" class="bg-white dark:bg-slate-800 rounded-[2rem] p-6 shadow-sm border border-slate-100 dark:border-slate-700 mb-6 transition-all">
+          <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-pink-500">water_drop</span>
+                  <h3 class="text-slate-900 dark:text-white text-lg font-bold">Cycle Tracker</h3>
+              </div>
+              <!-- Toggle -->
+              <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" v-model="isPeriod" class="sr-only peer">
+                  <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-pink-300 dark:peer-focus:ring-pink-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-500"></div>
+              </label>
+          </div>
+          
+          <p class="text-slate-500 text-sm mb-4">Haid hari ini?</p>
+
+          <!-- Symptoms (Conditional) -->
+          <div v-if="isPeriod" class="animate-fade-in-down">
+              <p class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-3 ml-1 uppercase tracking-wider">Gejala / Symptoms</p>
+              <div class="flex flex-wrap gap-2">
+                  <button 
+                      v-for="sym in PERIOD_SYMPTOMS"
+                      :key="sym.id"
+                      @click="toggleSymptom(sym.id)"
+                      class="flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-200 border border-transparent"
+                      :class="selectedSymptoms.includes(sym.id) ? 'bg-pink-50 text-pink-600 border-pink-200' : 'bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'"
+                  >
+                      <span class="material-symbols-outlined text-lg">{{ sym.icon }}</span>
+                      <span class="text-sm font-medium">{{ sym.label }}</span>
+                  </button>
+              </div>
+          </div>
+      </div>
+
       <!-- Journal Entry -->
       <div class="flex-1 mb-8 relative group">
+
         <textarea 
             v-model="journalText"
             :placeholder="t.daily_log.journal_ph"

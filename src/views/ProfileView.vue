@@ -17,7 +17,7 @@ const localeStore = useLocaleStore()
 const { t, locale } = storeToRefs(localeStore)
 
 // State Mapping (Keeps template compatible)
-const { name: userName, avatar: userAvatar, age: userAge, hobby: userHobby, motto: userMotto, preferences, pin } = storeToRefs(userStore)
+const { name: userName, avatar: userAvatar, age: userAge, hobby: userHobby, motto: userMotto, preferences, pin, gender: userGender } = storeToRefs(userStore)
 const { logs } = storeToRefs(moodStore)
 
 // Derived Stats
@@ -26,7 +26,7 @@ const streak = computed(() => moodStore.streak) // Getter from store
 
 // Editing State
 const showEditModal = ref(false)
-const editingUser = ref({ name: '', age: '', hobby: '', motto: '' })
+const editingUser = ref({ name: '', age: '', hobby: '', motto: '', gender: '' })
 const fileInput = ref(null)
 
 // Handlers
@@ -35,8 +35,10 @@ const openEditModal = () => {
         name: userName.value,
         age: userAge.value,
         hobby: userHobby.value,
-        motto: userMotto.value
+        motto: userMotto.value,
+        gender: userGender.value || 'male'
     }
+
     showEditModal.value = true
 }
 
@@ -45,8 +47,10 @@ const saveProfile = () => {
         name: editingUser.value.name,
         age: editingUser.value.age,
         hobby: editingUser.value.hobby,
-        motto: editingUser.value.motto
+        motto: editingUser.value.motto,
+        gender: editingUser.value.gender
     })
+
     showEditModal.value = false
 }
 
@@ -220,10 +224,10 @@ const showTutorial = () => {
     router.push('/dashboard')
 }
 
-    const showAbout = () => {
+const showAbout = () => {
     comingSoonData.value = {
-        title: 'StudyMood v0.1.3 (Alpha Build)',
-        message: 'This is an Alpha Build (v0.1.3). Updated: 30 Dec 2025. Features are subject to change. Thank you for testing!',
+        title: 'StudyMood v0.1.4 (Alpha)',
+        message: 'Changelog (Jan 2026):\n• Added Menstruation Tracker\n• Added Cycle Impact Analytics\n• Improved Focus Score Labels\n\nThank you for testing!',
         icon: 'info'
     }
     showComingSoon.value = true
@@ -527,7 +531,7 @@ const savePin = () => {
                         </div>
                         <div class="flex flex-col">
                             <p class="text-slate-900 dark:text-white text-base font-medium leading-normal">About App</p>
-                            <p class="text-slate-400 text-xs font-mono">v0.1.3 Alpha</p>
+                            <p class="text-slate-400 text-xs font-mono">v0.1.4 Alpha (Jan 10 Update)</p>
                         </div>
                     </div>
                     <span class="material-symbols-outlined text-slate-400">chevron_right</span>
@@ -612,6 +616,28 @@ const savePin = () => {
                                 <input v-model="editingUser.hobby" type="text" class="w-full bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white rounded-2xl px-4 py-3 border-2 border-transparent focus:border-primary focus:outline-none transition-all font-bold placeholder:font-medium" placeholder="Reading">
                             </div>
                         </div>
+
+                        <!-- Gender -->
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1">Gender</label>
+                            <div class="flex gap-2">
+                                <button 
+                                    @click="editingUser.gender = 'male'" 
+                                    class="flex-1 py-2 rounded-xl text-sm font-bold border-2 transition-all"
+                                    :class="editingUser.gender === 'male' ? 'border-primary bg-primary/10 text-primary' : 'border-slate-100 dark:border-slate-700 text-slate-400'"
+                                >
+                                    Male
+                                </button>
+                                <button 
+                                    @click="editingUser.gender = 'female'" 
+                                    class="flex-1 py-2 rounded-xl text-sm font-bold border-2 transition-all"
+                                    :class="editingUser.gender === 'female' ? 'border-pink-500 bg-pink-500/10 text-pink-500' : 'border-slate-100 dark:border-slate-700 text-slate-400'"
+                                >
+                                    Female
+                                </button>
+                            </div>
+                        </div>
+
 
                         <!-- Motto -->
                         <div class="space-y-1">

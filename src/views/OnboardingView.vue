@@ -51,8 +51,10 @@ const moods = [
 
 // Step 1: User Profile
 const userName = ref('')
+const selectedGender = ref('male')
 const educationLevel = ref('')
 const educationOptions = ['Elementary', 'Middle School', 'High School', 'University']
+
 const showValidation = ref(false)
 
 const selectedMood = ref('neutral') // Default to neutral
@@ -175,9 +177,11 @@ const finishOnboarding = () => {
   // 1. Save Profile
   userStore.updateProfile({
       name: userName.value,
+      gender: selectedGender.value,
       educationStage: educationLevel.value,
       isOnboarded: true
   })
+
   
   // 2. Save Subjects
   // Filter the full subjects list to only include those selected or added
@@ -269,6 +273,28 @@ const onLeave = (el, done) => {
                             class="w-full px-5 py-3.5 bg-white dark:bg-slate-800 rounded-2xl border-2 border-transparent focus:border-primary/30 focus:bg-white dark:focus:bg-slate-800 focus:ring-4 focus:ring-primary/10 transition-all outline-none font-bold text-slate-700 dark:text-white placeholder-slate-400 shadow-sm"
                         >
                     </div>
+
+                    <!-- Gender Input -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider ml-1 transition-colors">Gender</label>
+                        <div class="flex gap-3">
+                            <button 
+                                @click="selectedGender = 'male'" 
+                                class="flex-1 py-3.5 rounded-2xl text-sm font-bold border-2 transition-all duration-200"
+                                :class="selectedGender === 'male' ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20' : 'bg-white dark:bg-slate-800 border-transparent text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700'"
+                            >
+                                Male
+                            </button>
+                            <button 
+                                @click="selectedGender = 'female'" 
+                                class="flex-1 py-3.5 rounded-2xl text-sm font-bold border-2 transition-all duration-200"
+                                :class="selectedGender === 'female' ? 'bg-pink-500 border-pink-500 text-white shadow-lg shadow-pink-500/20' : 'bg-white dark:bg-slate-800 border-transparent text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700'"
+                            >
+                                Female
+                            </button>
+                        </div>
+                    </div>
+
 
                     <!-- Education Level Selector -->
                     <div class="space-y-2">

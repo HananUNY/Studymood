@@ -72,6 +72,25 @@ Manages the core diary entries.
 ### 3. `planStore.js` & `subjectStore.js`
 Manage study plans and academic subjects respectively.
 
+### 4. `userStore.js` (Updates)
+- **New State**: `gender` ('male'/'female'), `periodData` (Array of timestamps).
+- **Logic**: Handles gender-specific UI toggles (e.g., Cycle Tracker in Daily Log).
+
+---
+
+## 🩸 Menstruation Tracker Implementation
+
+### Overview
+A privacy-focused tracker integrated into the daily log flow.
+
+- **Components**:
+    - `DailyLogView.vue`: Conditionally renders "Cycle Tracker" card if `user.gender === 'female'`.
+    - `AnalyticsView.vue`: Computes "Cycle Impact" by comparing `Focus Score` during period vs. non-period days.
+- **Data Structure**:
+    - `isPeriod` (boolean flag in daily logs).
+    - `symptoms` (Array of strings in daily logs).
+
+
 ---
 
 ## 🔐 Security & Privacy Implementation

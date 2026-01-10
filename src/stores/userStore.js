@@ -13,6 +13,9 @@ export const useUserStore = defineStore('user', () => {
     const hasSeenTutorial = ref(false)
     const pin = ref(null) // null = no pin set
     const isLocked = ref(false) // Session lock state
+    const gender = ref('male') // 'male', 'female'
+    const periodData = ref([]) // History of period start dates
+
 
     // Preferences
     const preferences = ref({
@@ -37,10 +40,13 @@ export const useUserStore = defineStore('user', () => {
                     if (data.preferences) preferences.value = data.preferences
                     if (data.preferences) preferences.value = data.preferences
                     if (data.hasSeenTutorial !== undefined) hasSeenTutorial.value = data.hasSeenTutorial
+                    if (data.gender) gender.value = data.gender
+                    if (data.periodData) periodData.value = data.periodData
                     if (data.pin) {
                         pin.value = data.pin
                         isLocked.value = true // Auto-lock on load if pin exists
                     }
+
                 }
             } catch (e) {
                 console.error('Error loading user data', e)
@@ -73,11 +79,13 @@ export const useUserStore = defineStore('user', () => {
         if (updates.hobby) hobby.value = updates.hobby
         if (updates.motto) motto.value = updates.motto
         if (updates.avatar) avatar.value = updates.avatar
+        if (updates.gender) gender.value = updates.gender
         if (updates.educationStage) educationStage.value = updates.educationStage
         if (updates.isOnboarded !== undefined) isOnboarded.value = updates.isOnboarded
         if (updates.preferences) preferences.value = { ...preferences.value, ...updates.preferences }
         save()
     }
+
 
     function setOnboarded(status) {
         isOnboarded.value = status
@@ -118,12 +126,14 @@ export const useUserStore = defineStore('user', () => {
             isOnboarded: isOnboarded.value,
             educationStage: educationStage.value,
             preferences: preferences.value,
-            preferences: preferences.value,
             hasSeenTutorial: hasSeenTutorial.value,
-            pin: pin.value
+            pin: pin.value,
+            gender: gender.value,
+            periodData: periodData.value
         }
         localStorage.setItem('sm_user', JSON.stringify(data))
     }
+
 
     // Security Actions
     function setPin(newPin) {
@@ -167,6 +177,9 @@ export const useUserStore = defineStore('user', () => {
         setPin,
         removePin,
         unlockApp,
-        lockApp
+        lockApp,
+        gender,
+        periodData
     }
+
 })

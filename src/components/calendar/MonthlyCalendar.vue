@@ -139,10 +139,13 @@ const selectDay = (day) => {
                          <span class="text-xl leading-none animate-pulse-once filter drop-shadow-sm">
                              {{ getMoodStyle(getLogForDay(dayObj.day)).emoji }}
                          </span>
-                         <div class="flex gap-0.5 mt-1">
+                         <div class="flex gap-0.5 mt-1 items-center">
                              <div class="w-1.5 h-1.5 rounded-full" :class="getMoodStyle(getLogForDay(dayObj.day)).color"></div>
+                             <!-- Period Dot -->
+                             <span v-if="getLogForDay(dayObj.day).isPeriod" class="material-symbols-outlined text-[10px] text-pink-500 leading-none">water_drop</span>
                          </div>
                     </div>
+
                     
                     <!-- Holiday Text (Small at bottom) -->
                     <div v-else-if="dayObj.holiday" class="mt-1 px-1">

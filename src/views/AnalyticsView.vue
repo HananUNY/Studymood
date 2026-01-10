@@ -4,7 +4,10 @@ import { storeToRefs } from 'pinia'
 import { useMoodStore } from '../stores/moodStore'
 import { useLocaleStore } from '../stores/localeStore'
 import MoodTrendChart from '../components/analytics/MoodTrendChart.vue'
+import MoodDistributionChart from '../components/analytics/MoodDistributionChart.vue'
+import ConfidenceTrendChart from '../components/analytics/ConfidenceTrendChart.vue'
 import StressSourcesChart from '../components/analytics/StressSourcesChart.vue'
+
 
 const moodStore = useMoodStore()
 const { logs, weeklyLogs } = storeToRefs(moodStore)
@@ -369,6 +372,77 @@ const subjectStats = computed(() => {
     return { mostFrequent, calm, stressful }
 })
 
+// --- Flow / Productivity Score ---
+const flowScore = computed(() => {
+    if (logs.value.length === 0) return 0
+    
+    // Weighted Average of Confidence (Skill) vs Stress (Challenge)
+    // Formula: (Confidence * MoodFactor)
+    // MoodFactor: Calm=1.0, Happy=1.0, Okay=0.8, Sad=0.5, High=0.4
+    
+    const totalScore = logs.value.reduce((acc, log) => {
+        let moodFactor = 0.8
+        const s = log.stressLevel
+        if (s === 'calm' || s === 'happy') moodFactor = 1.0
+        else if (s === 'sad') moodFactor = 0.5
+        else if (s === 'high') moodFactor = 0.4
+        
+        return acc + ((log.confidence || 50) * moodFactor)
+    }, 0)
+
+    return Math.round(totalScore / logs.value.length)
+})
+
+const flowStateStatus = computed(() => {
+    const s = flowScore.value
+    if (s >= 80) return { label: 'Optimal Flow', color: 'text-emerald-500', desc: 'Peak performance state!' }
+    if (s >= 60) return { label: 'In the Zone', color: 'text-blue-500', desc: 'Good balance of skill & challenge.' }
+    if (s >= 40) return { label: 'Distracted', color: 'text-orange-500', desc: 'Try to minimize interruptions.' }
+    return { label: 'Struggling', color: 'text-rose-500', desc: 'Take a break and reset.' }
+})
+
+// --- Cycle Analytics (Female Only) ---
+const cycleAnalysis = computed(() => {
+    // 1. Separate logs
+    const periodLogs = logs.value.filter(l => l.isPeriod)
+    const normalLogs = logs.value.filter(l => !l.isPeriod)
+
+    if (periodLogs.length === 0) return null
+
+    // 2. Helper to calc average Flow Score
+    const calcFlow = (list) => {
+        if (list.length === 0) return 0
+        const total = list.reduce((acc, log) => {
+            let moodFactor = 0.8
+            const s = log.stressLevel
+            if (s === 'calm' || s === 'happy') moodFactor = 1.0
+            else if (s === 'sad') moodFactor = 0.6 // Slightly more forgiving in general?
+            else if (s === 'high') moodFactor = 0.4
+            return acc + ((log.confidence || 50) * moodFactor)
+        }, 0)
+        return Math.round(total / list.length)
+    }
+
+    const periodScore = calcFlow(periodLogs)
+    const normalScore = calcFlow(normalLogs)
+    const diff = periodScore - normalScore
+
+    let insight = ''
+    if (diff > -5 && diff < 5) insight = "Your flow is consistent regardless of your cycle."
+    else if (diff <= -5) insight = "You tend to have lower energy during your period. Take it easy."
+    else if (diff >= 5) insight = "Surprisingly, you focus better during your period!"
+
+    return {
+        periodScore,
+        normalScore,
+        diff,
+        insight,
+        count: periodLogs.length
+    }
+})
+
+
+
 </script>
 
 <template>
@@ -486,8 +560,67 @@ const subjectStats = computed(() => {
         </div>
     </div>
 
+    <!-- MOOD DISTRIBUTION -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white dark:bg-slate-800 rounded-[2rem] p-6 shadow-sm border border-slate-100 dark:border-slate-700">
+            <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-4">Mood Distribution</h3>
+            <MoodDistributionChart :logs="logs" />
+        </div>
+
+        <!-- FLOW SCORE & CONFIDENCE -->
+        <div class="bg-white dark:bg-slate-800 rounded-[2rem] p-6 shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col">
+            <div class="flex justify-between items-start mb-4">
+                 <div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white">Flow Score</h3>
+                    <p class="text-xs text-slate-400">Productivity Potential</p>
+                 </div>
+                 <div class="text-right">
+                     <span class="text-3xl font-bold" :class="flowStateStatus.color">{{ flowScore }}</span>
+                     <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">out of 100</p>
+                 </div>
+            </div>
+            
+            <div class="mb-6 bg-slate-50 dark:bg-slate-700/30 rounded-xl p-3">
+                <p class="text-sm font-bold" :class="flowStateStatus.color">{{ flowStateStatus.label }}</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">{{ flowStateStatus.desc }}</p>
+            </div>
+
+            <h4 class="text-sm font-bold text-slate-800 dark:text-white mb-2">Confidence Trend</h4>
+            <div class="flex-1 min-h-[100px]">
+                <ConfidenceTrendChart :logs="logs" />
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CYCLE IMPACT (Female Only) -->
+    <div v-if="cycleAnalysis" class="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/10 rounded-[2rem] p-6 shadow-sm border border-pink-100 dark:border-pink-800/30 mb-6">
+        <div class="flex items-center gap-2 mb-4">
+            <span class="material-symbols-outlined text-pink-500">water_drop</span>
+            <h3 class="text-lg font-bold text-slate-800 dark:text-white">Cycle Impact</h3>
+        </div>
+        
+        <div class="flex items-center justify-between mb-4">
+             <div class="text-center">
+                 <p class="text-xs font-bold text-slate-400 uppercase">Focus Score (Normal)</p>
+                 <p class="text-2xl font-bold text-slate-700 dark:text-slate-200">{{ cycleAnalysis.normalScore }}</p>
+             </div>
+             <div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700"></div>
+             <div class="text-center">
+                 <p class="text-xs font-bold text-pink-400 uppercase">Focus Score (Period)</p>
+                 <p class="text-2xl font-bold text-pink-600">{{ cycleAnalysis.periodScore }}</p>
+             </div>
+        </div>
+
+
+        <div class="bg-white/60 dark:bg-slate-800/60 rounded-xl p-3 text-center">
+            <p class="text-sm font-medium text-slate-600 dark:text-slate-300">{{ cycleAnalysis.insight }}</p>
+        </div>
+    </div>
+
     <!-- SUBJECT INSIGHTS -->
     <div class="mb-8" v-if="subjectStats.mostFrequent">
+
         <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-4 pl-1">Subject Insights</h3>
         
         <!-- Most Frequent -->

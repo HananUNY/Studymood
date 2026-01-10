@@ -1,6 +1,6 @@
 # 🎓 Study Mood v2 (Alpha)
 
-![Version](https://img.shields.io/badge/version-0.1.3%20Alpha-blueviolet)
+![Version](https://img.shields.io/badge/version-0.1.4%20Alpha-blueviolet)
 ![Status](https://img.shields.io/badge/status-Active%20Development-green)
 ![Tech](https://img.shields.io/badge/tech-Vue%203%20%7C%20Tailwind%20%7C%20Vite-blue)
 
@@ -14,6 +14,7 @@
 
 - **📊 Mood Tracking**: Log your daily mood with expressive emojis and study context.
 - **📅 Calendar Integration**: View your mood history in monthly, weekly, and daily views.
+- **🩸 Menstruation Tracker**: (Optional) Track your cycle and see how it affects your focus and mood.
 - **🎨 Mood Tahunan (Year in Pixels)**: Visualize your entire year's mood in a beautiful pixel grid.
 - **🔒 Privacy First**:
     - **Local Storage**: All data stays on your device.
